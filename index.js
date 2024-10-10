@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/api/pr', (req, res) => {
-    console.log()
+    console.log(req.body)
 })
 
 app.listen(port, () => {
