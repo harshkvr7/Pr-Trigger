@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Send API Request to Server
         run: |
-          curl "13.235.132.227:3000/api/pr?event=pull_request&action=${{ github.event.action }}&pr_number=${{ github.event.pull_request.number }}"
+          curl "3.110.197.237:3000/api/pr?event=pull_request&action=${{ github.event.action }}&pr_number=${{ github.event.pull_request.number }}"
