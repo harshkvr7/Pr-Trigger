@@ -3,20 +3,18 @@ import express from "express";
 const port = 3000;
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('hi')
-})
+app.use(express.json());
 
-app.get('/api/pr', (req, res) => {
-    console.log(req.query.event);
-    console.log(" ");
-    
-    console.log(req.query.pr_number);
-    console.log(req.query.action);
+app.get('/', (req, res) => {
+    res.send('hi');
+});
+
+app.post('/api/pr', (req, res) => {
+    console.log(req.body);  
 
     res.send("done");
-})
+});
 
 app.listen(port, () => {
     console.log("Server running on http://localhost:3000/");
-})
+});
