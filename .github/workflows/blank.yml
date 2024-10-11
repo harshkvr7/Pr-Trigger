@@ -11,4 +11,6 @@ jobs:
     steps:
       - name: Send API Request to Server
         run: |
-          curl "13.234.112.119:3000/api/pr?event=${{ github.event }}&action=${{ github.event.action }}&pr_number=${{ github.event.pull_request.number }}"
+          curl -X POST -H "Content-Type: application/json" \
+          -d "{\"event\": ${{ toJson(github.event) }}, \"action\": \"${{ github.event.action }}\", \"pr_number\": \"${{ github.event.pull_request.number }}\"}" \
+          http://13.234.112.119:3000/api/pr
