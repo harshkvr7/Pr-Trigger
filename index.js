@@ -9,6 +9,8 @@ app.get('/', (req, res) => {
 
 app.get('/api/pr', (req, res) => {
     console.log(req.query.event);
+    console.log(" ");
+    
     console.log(req.query.pr_number);
     console.log(req.query.action);
 
