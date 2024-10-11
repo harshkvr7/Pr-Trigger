@@ -12,5 +12,5 @@ jobs:
       - name: Send API Request to Server
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"event": {"action": "${{ github.event.action }}", "after": "${{ github.event.after }}", "before": "${{ github.event.before }}", "number": ${{ github.event.pull_request.number }}, "pull_request": {"_links": {"comments": {"href": "${{ github.event.pull_request._links.comments.href }}"}, "commits": {"href": "${{ github.event.pull_request._links.commits.href }}"}, "html": {"href": "${{ github.event.pull_request._links.html.href }}"}}}}}' \
+          -d '{"event": ${{ toJson(github.event) }} }' \
           http://13.234.112.119:3000/api/pr
