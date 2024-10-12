@@ -1,5 +1,8 @@
 import express from "express";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();  
 
 const port = 3000;
 const app = express();
@@ -12,7 +15,7 @@ app.post('/api/pr', async (req, res) => {
     const prNumber = prData.number;
 
     const filesUrl = `${repoData.url}/pulls/${prNumber}/files`;
-    
+
     try {
         const response = await axios.get(filesUrl, {
             headers: {
@@ -20,10 +23,10 @@ app.post('/api/pr', async (req, res) => {
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
-        
+
         const changedFiles = response.data;
         const fileNames = changedFiles.map(file => file.filename);
-        
+
         console.log("Updated files in PR:", fileNames);
 
         res.json({ message: "Files fetched", files: fileNames });
