@@ -19,7 +19,7 @@ app.post('/api/pr', async (req, res) => {
     try {
         const response = await axios.get(filesUrl, {
             headers: {
-                'Authorization': `Bearer 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`,
+                'Authorization': `Bearer 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`,
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
